@@ -14,3 +14,17 @@ TODO
   - Start: the traffic simulator starts moving the entity along the computed route, regularly publishing position updates (GeoJSON Points, what topic?) according to the simulation time. In the properties, its speed is specified.
   - Stop: the traffic simulator stops moving the entity. Upon receiving the stop signal, a current position update is sent.
   - Clear: the traffic simulator removes it from the list of entities to simulate. Upon receiving the stop signal, a current position update is sent, including a `clear` state.
+
+## Debug
+
+```bash
+cargo run
+```
+
+```bash
+cargo run -- --help # for instructions
+```
+
+## Tips
+
+Converting an AVRO schema to a Rust struct, use `rsgen-avro PATH_TO_SCHEMA_FILE.AVSC -`.

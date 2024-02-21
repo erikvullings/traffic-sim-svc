@@ -1,0 +1,3 @@
+KAFKA_HOST=localhost:3501
+SCHEMA_REGISTRY=http://localhost:3502
+GROUP_ID=traffic_sim_svc
