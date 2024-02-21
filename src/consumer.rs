@@ -72,9 +72,8 @@ impl KafkaConsumer {
                     //             );
                     if let Err(e) = sender.send(deserialized_payload) {
                         panic!("Error while sending via channel: {}", e);
-                    } else {
-                        println!("Message consumed successfully");
                     }
+                    // println!("Message consumed successfully");
                 } else {
                     panic!("Error while deserializing message payload");
                 }
