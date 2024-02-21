@@ -63,6 +63,12 @@ pub struct SimulationTimer {
     handle: tokio::task::JoinHandle<()>,
 }
 
+impl Drop for SimulationTimer {
+    fn drop(&mut self) {
+        self.handle.abort();
+    }
+}
+
 impl SimulationTimer {
     pub async fn new(
         kafka_host: &String,
@@ -108,7 +114,7 @@ impl SimulationTimer {
                 *state = message.state;
                 match message.simulation_time {
                     Some(sim_time) => {
-                        println!("Sim time: {}", sim_time);
+                        // println!("Sim time: {}", sim_time);
                         let mut time = time_clone.lock().unwrap();
                         *time = DateTime::from_timestamp_millis(sim_time).unwrap();
                     }
@@ -117,7 +123,7 @@ impl SimulationTimer {
                 let mut speed = speed_clone.lock().unwrap();
                 match message.simulation_speed {
                     Some(sim_speed) => {
-                        println!("Sim speed: {}", sim_speed);
+                        // println!("Sim speed: {}", sim_speed);
                         *speed = sim_speed;
                     }
                     _ => {
