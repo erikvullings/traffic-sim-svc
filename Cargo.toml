@@ -1,0 +1,22 @@
+[package]
+name = "traffic-sim-svc"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+schema_registry_converter = { version = "4.0.0", features = [
+    "avro",
+    "easy",
+    "futures",
+] }
+apache-avro = { version = "0.16.0", features = ["derive"] }
+futures = "0.3.30"
+rdkafka = "0.36.2"
+serde = "1.0.196"
+serde_json = "1.0.113"
+tokio = { version = "1.36.0", features = ["full"] }
+valhalla-client = "0.1.1"
+clap = "4.5.1"
+chrono = "0.4.34"
